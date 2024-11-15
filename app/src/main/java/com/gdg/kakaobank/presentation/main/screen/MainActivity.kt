@@ -1,4 +1,4 @@
-package com.gdg.kakaobank
+package com.gdg.kakaobank.presentation.main.screen
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
