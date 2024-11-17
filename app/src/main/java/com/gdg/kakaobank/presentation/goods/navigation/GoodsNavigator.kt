@@ -1,8 +1,8 @@
-package com.gdg.kakaobank.presentation.auth.navigation
+package com.gdg.kakaobank.presentation.goods.navigation
 
 import androidx.navigation.NavController
 
-class AuthNavigator(
+class GoodsNavigator(
     val navController: NavController
 ) {
     fun navigateBack() {

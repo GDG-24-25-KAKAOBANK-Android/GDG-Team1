@@ -1,4 +1,8 @@
 package com.gdg.kakaobank.presentation.auth.navigation
 
-class AuthNavGraph {
+import androidx.navigation.NavGraphBuilder
+
+fun NavGraphBuilder.authNavGraph(
+    navigator: AuthNavigator
+) {
 }
