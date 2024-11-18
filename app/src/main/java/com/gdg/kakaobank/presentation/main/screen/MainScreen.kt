@@ -97,7 +97,8 @@ fun MainScreen(
                             label = {
                                 Text(
                                     text = item.label,
-                                    style = b4Regular
+                                    style = b4Regular,
+                                    color = if(selectedItem == index) item.selectedText else item.unselectedText
                                 )
                             },
                             selected = selectedItem == index,
