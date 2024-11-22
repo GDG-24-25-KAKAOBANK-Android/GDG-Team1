@@ -1,9 +1,16 @@
 <resources>
     <string name="app_name">KakaoBank</string>
+
+
+    <!-- 혜택 페이지  -->
     <string name="tv_benefit_senditem1">공유하고</string>
     <string name="tv_benefit_senditem2">1원에 구매하기</string>
     <string name="tv_benefit_title">혜택</string>
     <string name="tv_benefit_ad1">1원 빼빼로 뽑기!</string>
     <string name="tv_benefit_ad2">소문내고 기회 더 얻기</string>
     <string name="tv_benefit_listname">바로 받아요</string>
+
+
+
+
 </resources>
