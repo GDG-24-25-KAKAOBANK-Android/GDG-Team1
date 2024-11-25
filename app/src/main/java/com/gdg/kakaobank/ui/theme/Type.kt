@@ -25,6 +25,10 @@ val pretendardBold = FontFamily(Font(R.font.pretendard_bold, FontWeight.Bold))
 val pretendardSemiBold = FontFamily(Font(R.font.pretendard_semibold, FontWeight.SemiBold))
 val pretendardRegular = FontFamily(Font(R.font.pretendard_regular, FontWeight.Normal))
 
+val pretendardSemiBoldStyle = TextStyle(
+    fontFamily = FontFamily(Font(R.font.pretendard_semibold, FontWeight.SemiBold)),
+    fontWeight = FontWeight.SemiBold,
+)
 
 val h1Bold =
     TextStyle(
