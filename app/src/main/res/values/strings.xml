@@ -9,6 +9,8 @@
     <string name="tv_benefit_ad1">1원 빼빼로 뽑기!</string>
     <string name="tv_benefit_ad2">소문내고 기회 더 얻기</string>
     <string name="tv_benefit_listname">바로 받아요</string>
+    <string name="username_gaeul">이가을</string>
+    <string name="my_account">내 계좌</string>
     <string name="username_gaeul">이가을님</string>
     <string name="kakaobank_service">카카오뱅크 서비스</string>
     <string name="introduction">관련 안내사항입니다</string>
@@ -20,6 +22,7 @@
     <string name="service_center">고객센터</string>
     <string name="logout">로그아웃</string>
     <string name="user_execute">회원 탈퇴</string>
+
 
 
 </resources>
