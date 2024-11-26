@@ -11,7 +11,4 @@ class HomeNavigator(
     fun navigateToTransfer() {
         navController.navigate("transfer")
     }
-    fun goBack() {
-        navController.popBackStack()
-    }
 }

@@ -9,8 +9,9 @@
     <string name="tv_benefit_ad1">1원 빼빼로 뽑기!</string>
     <string name="tv_benefit_ad2">소문내고 기회 더 얻기</string>
     <string name="tv_benefit_listname">바로 받아요</string>
-
-
+    <string name="user_name">이가을</string>
+    <string name="username_gaeul">이가을</string>
+    <string name="my_account">내 계좌</string>
 
 
 </resources>

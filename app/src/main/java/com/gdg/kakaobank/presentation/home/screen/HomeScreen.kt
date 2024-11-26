@@ -2,6 +2,7 @@ package com.gdg.kakaobank.presentation.home.screen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -15,7 +16,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -69,19 +69,14 @@ fun HomeScreen(navigator: HomeNavigator) {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-                .padding(horizontal = 20.dp)
+                .padding(horizontal = 20.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            item { Spacer(modifier = Modifier.height(12.dp)) }
             item { AccountCard("이가을의 통장", "100,000,000원", MainYellow, showTransferButton = true, onTransferClick = { navigator.navigateToTransfer() }) }
-            item { Spacer(modifier = Modifier.height(12.dp)) }
             item {AccountCard("GDG 숙명", "70,000원", Pink) }
-            item { Spacer(modifier = Modifier.height(12.dp)) }
             item { AccountCard("제주도 계모임", "14원", DarkMint) }
-            item { Spacer(modifier = Modifier.height(12.dp)) }
             item { AccountCard("세이프박스", "300,000원", LightMint) }
-            item { Spacer(modifier = Modifier.height(12.dp)) }
             item { AccountCard("이현진", "500,000원", DeepBlue) }
-            item { Spacer(modifier = Modifier.height(16.dp)) }
             item { AccountCard("여행 경비 저금 통장", "1,000,000", Gray) }
         }
     }
@@ -100,13 +95,13 @@ fun HomeTopBar() {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "이가을",
+                    text = stringResource(R.string.username_gaeul),
                     style = h5Bold,
                     color = Black
                 )
                 Spacer(modifier = Modifier.width(16.dp))
                 Text(
-                    text = "내 계좌",
+                    text = stringResource(R.string.my_account),
                     style = b4Bold,
                     color = Black
                 )
@@ -135,20 +130,13 @@ fun AccountCard(name: String, amount: String, backgroundColor: Color, showTransf
             .background(backgroundColor, RoundedCornerShape(20.dp))
             .padding(16.dp)
     ) {
-        Box(
+        Icon(
+            imageVector = ImageVector.vectorResource(R.drawable.ic_bank),
+            contentDescription = "카카오뱅크 로고",
+            tint = Color.Unspecified,
             modifier = Modifier
                 .size(31.dp)
-                .background(color = DarkYellow, RoundedCornerShape(50))
-        ) {
-            Icon(
-                imageVector = ImageVector.vectorResource(R.drawable.ic_b),
-                contentDescription = "카카오뱅크 로고",
-                modifier = Modifier
-                    .size(13.dp)
-                    .align(Alignment.Center),
-                tint = Color.White
-            )
-        }
+        )
         Spacer(modifier = Modifier.width(12.dp))
         Column(
             modifier = Modifier.weight(1f) // 남은 공간 텍스트 영역에 할당
