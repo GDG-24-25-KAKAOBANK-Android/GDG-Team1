@@ -1,8 +1,12 @@
 package com.gdg.kakaobank.presentation.other.screen
 
 import android.widget.Toast
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
@@ -30,45 +34,49 @@ fun WithDrawDialog(
     AlertDialog(
         onDismissRequest = { onDismiss() },
         title = {
-            Column(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally
-
-            ) {
-                Text(
-                    text = "회원 탈퇴 하시겠습니까?",
-                    style = h5Bold,
-                    color = Black,
-                    textAlign = TextAlign.Center
-                )
-            }
+            Text(
+                text = "회원 탈퇴 하시겠습니까?",
+                style = h5Bold,
+                color = Black,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 16.dp)
+            )
         },
 
-        dismissButton = {
-            Button(
-                onClick = { onDismiss() },
-                colors = ButtonDefaults.buttonColors(containerColor = Gray),
-                shape = RoundedCornerShape(50)
+        confirmButton = {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center
             ) {
-                Text(text = "취소", color = White)
+                Button(
+                    onClick = { onDismiss() },
+                    colors = ButtonDefaults.buttonColors(containerColor = Gray),
+                    shape = RoundedCornerShape(50),
+                    modifier = Modifier
+                        .size(width = 122.dp, height = 49.dp) // 버튼 크기 고정
+                        .padding(end = 3.5.dp) // 중앙에서 오른쪽으로 떨어진 거리
+                ) {
+                    Text(text = "취소", color = White)
+                }
+
+                Button(
+                    onClick = {
+                        onWithdraw()
+                        Toast.makeText(context, "회원 탈퇴 되었습니다.", Toast.LENGTH_SHORT).show()
+                    },
+                    colors = ButtonDefaults.buttonColors(containerColor = MainYellow),
+                    shape = RoundedCornerShape(50),
+                    modifier = Modifier
+                        .size(width = 122.dp, height = 49.dp) // 버튼 크기 고정
+                        .padding(start = 3.5.dp) // 중앙에서 왼쪽으로 떨어진 거리
+                ) {
+                    Text(text = "회원 탈퇴", color = Black)
+                }
             }
         },
         containerColor = White,
-        shape = RoundedCornerShape(16.dp),
-
-        confirmButton = {
-
-            Button(
-                onClick = {
-                    onWithdraw()
-                    Toast.makeText(context, "회원 탈퇴 되었습니다.", Toast.LENGTH_SHORT).show()
-                },
-                colors = ButtonDefaults.buttonColors(containerColor = MainYellow),
-                shape = RoundedCornerShape(50)
-            ) {
-                Text(text = "회원 탈퇴", color = Black)
-            }
-        }
-
+        shape = RoundedCornerShape(20.dp)
     )
 }

@@ -22,6 +22,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -30,8 +31,10 @@ import com.gdg.kakaobank.presentation.other.navigation.OtherNavigator
 import com.gdg.kakaobank.ui.theme.Black
 import com.gdg.kakaobank.ui.theme.White
 import com.gdg.kakaobank.ui.theme.Yellow
+import com.gdg.kakaobank.ui.theme.h1Bold
+import com.gdg.kakaobank.ui.theme.b1Semi
 import com.gdg.kakaobank.ui.theme.h5Bold
-import com.gdg.kakaobank.ui.theme.pretendardSemiBoldStyle
+import com.gdg.kakaobank.ui.theme.h6Semi
 
 @Composable
 fun OtherRoute(
@@ -43,8 +46,6 @@ fun OtherRoute(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun OtherScreen() {
-    val textStyle18 = pretendardSemiBoldStyle.copy(fontSize = 16.sp)
-    val textStyle15 = pretendardSemiBoldStyle.copy(fontSize = 12.sp)
 
     var showLogoutDialog by remember { mutableStateOf(false) }
     var showWithdrawDialog by remember { mutableStateOf(false) }
@@ -63,47 +64,47 @@ fun OtherScreen() {
                     .padding(vertical = 16.dp)
             ) {
                 Text(
-                    text = "이가을님",
+                    text = stringResource(R.string.username_gaeul),
                     style = h5Bold,
                     color = Black,
                     modifier = Modifier.padding(bottom = 8.dp)
                 )
                 Text(
-                    text = "카카오뱅크 서비스",
+                    text = stringResource(R.string.kakaobank_service),
                     style = h5Bold,
                     color = Yellow,
                     modifier = Modifier.padding(bottom = 8.dp)
                 )
                 Text(
-                    text = "관련 안내사항입니다",
+                    text = stringResource(R.string.introduction),
                     style = h5Bold,
                     color = Black,
                 )
             }
             Text(
-                text = "이용안내",
-                style = textStyle18,
+                text = stringResource(R.string.use_guide),
+                style = h6Semi,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 16.dp)
             )
-            MenuItem(title = "서비스 이용약관", textStyle = textStyle15)
-            MenuItem(title = "개인정보 처리방침", textStyle = textStyle15)
-            MenuItem(title = "버전 정보", textStyle = textStyle15)
+            MenuItem(title = stringResource(R.string.terms_of_service), textStyle = b1Semi)
+            MenuItem(title = stringResource(R.string.policy_of_personal_info), textStyle = b1Semi)
+            MenuItem(title = stringResource(R.string.information_of_version), textStyle = b1Semi)
 
             Spacer(modifier = Modifier.height(16.dp))
 
             Text(
-                text = "기타",
-                style = textStyle18,
+                text = stringResource(R.string.etc),
+                style = h6Semi,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 16.dp)
             )
-            MenuItem(title = "고객센터", textStyle = textStyle15)
+            MenuItem(title = stringResource(R.string.service_center), textStyle = b1Semi)
             MenuItem(
-                title = "로그아웃",
-                textStyle = textStyle15,
+                title = stringResource(R.string.logout),
+                textStyle = b1Semi,
                 onClick = {showLogoutDialog = true}
             )
             if (showLogoutDialog) {
@@ -112,8 +113,8 @@ fun OtherScreen() {
                     onLogout = { showLogoutDialog = false }
                 )
             }
-            MenuItem(title = "회원 탈퇴",
-                textStyle = textStyle15,
+            MenuItem(title = stringResource(R.string.user_execute),
+                textStyle = b1Semi,
                 onClick = {showWithdrawDialog = true}
                 )
             if (showWithdrawDialog) {
