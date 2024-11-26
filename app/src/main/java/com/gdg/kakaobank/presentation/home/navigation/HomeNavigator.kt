@@ -8,4 +8,10 @@ class HomeNavigator(
     fun navigateBack() {
         navController.popBackStack()
     }
+    fun navigateToTransfer() {
+        navController.navigate("transfer")
+    }
+    fun goBack() {
+        navController.popBackStack()
+    }
 }
