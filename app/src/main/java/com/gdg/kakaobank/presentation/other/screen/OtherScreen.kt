@@ -25,13 +25,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.gdg.kakaobank.R
 import com.gdg.kakaobank.presentation.other.navigation.OtherNavigator
 import com.gdg.kakaobank.ui.theme.Black
 import com.gdg.kakaobank.ui.theme.White
 import com.gdg.kakaobank.ui.theme.Yellow
-import com.gdg.kakaobank.ui.theme.h1Bold
 import com.gdg.kakaobank.ui.theme.b1Semi
 import com.gdg.kakaobank.ui.theme.h5Bold
 import com.gdg.kakaobank.ui.theme.h6Semi
@@ -43,7 +41,6 @@ fun OtherRoute(
     OtherScreen()
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun OtherScreen() {
 

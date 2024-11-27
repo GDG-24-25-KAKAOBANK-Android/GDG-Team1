@@ -16,29 +16,24 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.TopAppBarColors
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.modifier.modifierLocalMapOf
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import com.gdg.kakaobank.R
 import com.gdg.kakaobank.presentation.home.navigation.HomeNavigator
 import com.gdg.kakaobank.ui.theme.Black
-import com.gdg.kakaobank.ui.theme.DarkGray
 import com.gdg.kakaobank.ui.theme.DarkMint
-import com.gdg.kakaobank.ui.theme.DarkYellow
 import com.gdg.kakaobank.ui.theme.DeepBlue
 import com.gdg.kakaobank.ui.theme.Gray
 import com.gdg.kakaobank.ui.theme.LightMint
@@ -51,17 +46,16 @@ import com.gdg.kakaobank.ui.theme.b4Regular
 import com.gdg.kakaobank.ui.theme.b4Semi
 import com.gdg.kakaobank.ui.theme.h5Bold
 import com.gdg.kakaobank.ui.theme.h6Bold
-import java.time.temporal.TemporalAmount
 
 @Composable
 fun HomeRoute(
     navigator: HomeNavigator
 ) {
-    HomeScreen(navigator)
+    HomeScreen(onTransferClick = {navigator.navigateToTransfer()})
 }
 
 @Composable
-fun HomeScreen(navigator: HomeNavigator) {
+fun HomeScreen(onTransferClick: () -> Unit) {
     Scaffold(
         topBar = { HomeTopBar() }
     ) { paddingValues ->
@@ -72,7 +66,7 @@ fun HomeScreen(navigator: HomeNavigator) {
                 .padding(horizontal = 20.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            item { AccountCard("이가을의 통장", "100,000,000원", MainYellow, showTransferButton = true, onTransferClick = { navigator.navigateToTransfer() }) }
+            item { AccountCard("이가을의 통장", "100,000,000원", MainYellow, showTransferButton = true, onTransferClick = onTransferClick) }
             item {AccountCard("GDG 숙명", "70,000원", Pink) }
             item { AccountCard("제주도 계모임", "14원", DarkMint) }
             item { AccountCard("세이프박스", "300,000원", LightMint) }
