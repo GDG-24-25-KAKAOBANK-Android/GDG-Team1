@@ -61,7 +61,7 @@ fun OtherScreen() {
                     .padding(vertical = 16.dp)
             ) {
                 Text(
-                    text = stringResource(R.string.username_gaeul),
+                    text = stringResource(R.string.username_gaeulnim),
                     style = h5Bold,
                     color = Black,
                     modifier = Modifier.padding(bottom = 8.dp)

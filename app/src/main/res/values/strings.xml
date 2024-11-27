@@ -11,7 +11,7 @@
     <string name="tv_benefit_listname">바로 받아요</string>
     <string name="username_gaeul">이가을</string>
     <string name="my_account">내 계좌</string>
-    <string name="username_gaeul">이가을님</string>
+    <string name="username_gaeulnim">이가을님</string>
     <string name="kakaobank_service">카카오뱅크 서비스</string>
     <string name="introduction">관련 안내사항입니다</string>
     <string name="use_guide">이용안내</string>
@@ -23,6 +23,9 @@
     <string name="logout">로그아웃</string>
     <string name="user_execute">회원 탈퇴</string>
 
+    <!--상품 페이지-->
+    <string name="tv_goodsInvest_title">투자</string>
+    <string name="tv_goodsLoan_title">대출</string>
 
 
 </resources>
