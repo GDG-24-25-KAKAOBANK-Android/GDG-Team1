@@ -51,7 +51,7 @@ fun GoodsRecommendScreen(
             .padding(top = 15.dp)
             .padding(horizontal = 24.dp)
     ) {
-        item {
+        item{
             Box(
                 modifier = Modifier
                     .width(313.dp)
