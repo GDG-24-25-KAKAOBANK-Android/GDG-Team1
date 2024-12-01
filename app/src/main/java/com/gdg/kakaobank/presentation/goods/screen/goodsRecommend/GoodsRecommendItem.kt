@@ -31,7 +31,6 @@ fun GoodsRecommendItem(
 
         Column(
             modifier = Modifier
-                //요기 패딩 함 확인 해보기
                 .padding(horizontal = 61.dp)
                 .padding(vertical = 6.dp)
         ) {
