@@ -26,6 +26,7 @@
     <!--상품 페이지-->
     <string name="tv_goodsInvest_title">투자</string>
     <string name="tv_goodsLoan_title">대출</string>
+    <string name="transfer">이체</string>
 
 
 </resources>
