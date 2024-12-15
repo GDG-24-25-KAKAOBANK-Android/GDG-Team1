@@ -3,7 +3,8 @@ package com.gdg.kakaobank.presentation.home.navigation
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.gdg.kakaobank.presentation.home.screen.HomeRoute
-import com.gdg.kakaobank.presentation.transfer.TransferScreen
+import com.gdg.kakaobank.presentation.transfer.screen.SendScreen
+import com.gdg.kakaobank.presentation.transfer.screen.TransferRoute
 
 fun NavGraphBuilder.homeNavGraph(
     navigator: HomeNavigator
@@ -13,6 +14,13 @@ fun NavGraphBuilder.homeNavGraph(
     }
 
     composable(route = "transfer") {
-        TransferScreen(navigator = navigator)
+        TransferRoute(navigator = navigator)
     }
+
+    composable(route = "send") {
+        SendScreen(navigator = navigator)
+    }
+
+    //transferNavGraph(navigator = TransferNavigator(navigator.navController))
+
 }

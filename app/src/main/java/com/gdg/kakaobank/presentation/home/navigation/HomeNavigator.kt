@@ -11,4 +11,7 @@ class HomeNavigator(
     fun navigateToTransfer() {
         navController.navigate("transfer")
     }
+    fun navigateToSend() {
+        navController.navigate("send")
+    }
 }

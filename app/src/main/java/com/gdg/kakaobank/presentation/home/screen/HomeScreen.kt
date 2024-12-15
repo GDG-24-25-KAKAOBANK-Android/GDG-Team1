@@ -148,7 +148,6 @@ fun AccountCard(name: String, amount: String, backgroundColor: Color, showTransf
         if (showTransferButton) {
             Box(
                 modifier = Modifier
-                    //FIXME 위치 정확하게 조정하기
                     .offset(x = 30.dp, y = 65.dp)
             ) {
                 Box(

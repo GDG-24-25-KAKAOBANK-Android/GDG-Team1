@@ -32,7 +32,7 @@ fun KakaoNavHost(
     authNavigator: AuthNavigator,
     goodsNavigator: GoodsNavigator,
     benefitNavigator: BenefitNavigator,
-    otherNavigator: OtherNavigator
+    otherNavigator: OtherNavigator,
     ) {
     Box(
         modifier = modifier
