@@ -21,8 +21,6 @@ import com.gdg.kakaobank.presentation.main.navigation.MainNavigator
 import com.gdg.kakaobank.presentation.main.navigation.mainNavGraph
 import com.gdg.kakaobank.presentation.other.navigation.OtherNavigator
 import com.gdg.kakaobank.presentation.other.navigation.otherNavGraph
-import com.gdg.kakaobank.presentation.transfer.navigation.TransferNavigator
-import com.gdg.kakaobank.presentation.transfer.navigation.transferNavGraph
 
 
 @Composable
@@ -35,7 +33,6 @@ fun KakaoNavHost(
     goodsNavigator: GoodsNavigator,
     benefitNavigator: BenefitNavigator,
     otherNavigator: OtherNavigator,
-    transferNavigator: TransferNavigator
     ) {
     Box(
         modifier = modifier
@@ -59,7 +56,6 @@ fun KakaoNavHost(
             benefitNavGraph(benefitNavigator)
             goodsNavGraph(goodsNavigator)
             otherNavGraph(otherNavigator)
-            transferNavGraph(transferNavigator)
         }
     }
 }

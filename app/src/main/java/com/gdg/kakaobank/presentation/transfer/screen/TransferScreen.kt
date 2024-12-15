@@ -20,10 +20,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.gdg.kakaobank.R
 import com.gdg.kakaobank.presentation.home.navigation.HomeNavigator
-import com.gdg.kakaobank.presentation.transfer.navigation.TransferNavigator
 import com.gdg.kakaobank.ui.component.NextBox
 import com.gdg.kakaobank.ui.theme.Black
 import com.gdg.kakaobank.ui.theme.Gray
@@ -36,12 +36,11 @@ import com.gdg.kakaobank.ui.theme.h7Semi
 
 @Composable
 fun TransferRoute(
-    navigator: TransferNavigator,
-    homeNavigator: HomeNavigator
+    navigator: HomeNavigator
 ) {
     TransferScreen(
         onNextClick = { navigator.navigateToSend() },
-        onCloseClick = { homeNavigator.navigateBack()}
+        onCloseClick = { navigator.navigateBack()}
         )
 }
 
@@ -167,6 +166,12 @@ fun TransferItem(name: String, amount: String) {
             color = Black
         )
     }
+}
+
+@Preview
+@Composable
+fun TransferScreenPreview(){
+    TransferScreen(onNextClick = {}, onCloseClick={})
 }
 
 

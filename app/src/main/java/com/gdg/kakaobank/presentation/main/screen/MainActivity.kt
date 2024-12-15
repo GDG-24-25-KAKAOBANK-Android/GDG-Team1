@@ -27,7 +27,6 @@ import com.gdg.kakaobank.presentation.home.navigation.HomeNavigator
 import com.gdg.kakaobank.presentation.main.navigation.MainNavigator
 import com.gdg.kakaobank.presentation.navigator.KakaoNavHost
 import com.gdg.kakaobank.presentation.other.navigation.OtherNavigator
-import com.gdg.kakaobank.presentation.transfer.navigation.TransferNavigator
 import com.gdg.kakaobank.ui.theme.KakaoBankTheme
 import com.gdg.kakaobank.ui.theme.White
 import com.gdg.kakaobank.util.toast
@@ -78,7 +77,6 @@ class MainActivity : ComponentActivity() {
                 val otherNavigator = remember(navController) { OtherNavigator(navController) }
                 val goodsNavigator = remember(navController) { GoodsNavigator(navController) }
                 val benefitNavigator = remember(navController) { BenefitNavigator(navController) }
-                val transferNavigator = remember(navController) { TransferNavigator(navController) }
 
                 Scaffold(
                     containerColor = MaterialTheme.colorScheme.background,
@@ -92,8 +90,7 @@ class MainActivity : ComponentActivity() {
                             authNavigator = authNavigator,
                             goodsNavigator = goodsNavigator,
                             benefitNavigator = benefitNavigator,
-                            otherNavigator = otherNavigator,
-                            transferNavigator = transferNavigator
+                            otherNavigator = otherNavigator
                         )
                     }
                 )
