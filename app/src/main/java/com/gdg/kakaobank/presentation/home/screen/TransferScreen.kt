@@ -1,4 +1,6 @@
-package com.gdg.kakaobank.presentation.transfer.screen
+@file:Suppress("DEPRECATION")
+
+package com.gdg.kakaobank.presentation.home.screen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -9,14 +11,23 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
@@ -39,23 +50,33 @@ fun TransferRoute(
     navigator: HomeNavigator
 ) {
     TransferScreen(
-        onNextClick = { navigator.navigateToSend() },
-        onCloseClick = { navigator.navigateBack()}
-        )
+        onNextClick = { receiver ->
+            navigator.navigateToSend(receiver) // receiver 값을 전달
+        },
+        onCloseClick = { navigator.navigateBack() }
+    )
 }
 
 @Composable
-fun TransferScreen(onNextClick: () -> Unit, onCloseClick: () -> Unit) {
+fun TransferScreen(
+    onNextClick: (String) -> Unit,
+    onCloseClick: () -> Unit
+) {
+    var receiver by remember { mutableStateOf("") } // TextField 값 관리
+
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(White)
     ) {
-        TransferTopBar(onCloseClick = onCloseClick)
+        TransferTopBar(
+            onTextChange = { receiver = it }, // 입력값 업데이트
+            onCloseClick = onCloseClick
+        )
         LazyColumn(
             modifier = Modifier
                 .weight(1f)
-                .padding(horizontal = 50.dp),
+                .padding(horizontal = 20.dp),
             verticalArrangement = Arrangement.spacedBy(31.dp),
         ) {
             item { TransferItem(name = "이가을", amount = "10,000원") }
@@ -69,18 +90,21 @@ fun TransferScreen(onNextClick: () -> Unit, onCloseClick: () -> Unit) {
                 .fillMaxWidth()
                 .padding(bottom = 20.dp),
             contentAlignment = Alignment.Center
-        ){
+        ) {
             NextBox(
                 text = "다음",
-                onNextClick = onNextClick
+                receiver = receiver, // 현재 입력된 값을 전달
+                onNextClick = { onNextClick(receiver) } // 버튼 클릭 시 현재 값 전달
             )
         }
     }
-
 }
 
 @Composable
-fun TransferTopBar(onCloseClick: () -> Unit) {
+fun TransferTopBar(
+    onTextChange: (String) -> Unit,
+    onCloseClick: () -> Unit
+) {
     Column {
         Box(
             modifier = Modifier
@@ -96,57 +120,80 @@ fun TransferTopBar(onCloseClick: () -> Unit) {
                     .clickable { onCloseClick() }
             )
         }
+        Spacer(modifier = Modifier.size(41.dp))
 
         Text(
             modifier = Modifier
-                .padding(start = 50.dp, top = 81.dp),
+                .padding(start = 20.dp),
             text = stringResource(R.string.transfer),
             style = h5Bold,
             color = Black
         )
-        Spacer(modifier = Modifier.size(21.dp))
+        Spacer(modifier = Modifier.size(15.dp))
+
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 50.dp),
+                .padding(start = 15.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Icon(
-                imageVector = ImageVector.vectorResource(id = R.drawable.ic_transfer_search),
-                contentDescription = "검색",
-                tint = Gray,
-                modifier = Modifier.size(20.dp)
-            )
-            Spacer(modifier = Modifier.size(15.dp))
-            Text(
-                text = "받는사람 이름 또는 계좌번호",
-                style = b4Regular,
-                color = Gray
-            )
+            SearchTextField(onTextChange = onTextChange) // 상태 변경 콜백 전달
         }
-        Spacer(modifier = Modifier.size(11.dp))
         Box(
             modifier = Modifier
-                .fillMaxWidth(),
+                .padding(horizontal = 20.dp)
+                .fillMaxWidth()
+                .height(1.dp)
+                .background(color = Gray),
             contentAlignment = Alignment.Center,
-        ) {
-            Icon(
-                imageVector = ImageVector.vectorResource(id = R.drawable.ic_transfer_line),
-                contentDescription = "라인",
-                tint = Gray,
-            )
-        }
+        ) {}
         Spacer(modifier = Modifier.size(38.dp))
         Text(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 50.dp, bottom = 23.dp),
+                .padding(start = 20.dp, bottom = 23.dp),
             text = "최근 이체",
             style = h7Semi,
             color = Black
         )
     }
 }
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun SearchTextField(
+    onTextChange: (String) -> Unit
+) {
+    var text by remember { mutableStateOf("") }
+
+    OutlinedTextField(
+        value = text,
+        onValueChange = {
+            text = it
+            onTextChange(it) // 값이 변경되면 상위로 전달
+        },
+        modifier = Modifier.fillMaxWidth(),
+        placeholder = { Text("받는사람 이름 또는 계좌번호") },
+        leadingIcon = {
+            Icon(
+                imageVector = ImageVector.vectorResource(id = R.drawable.ic_transfer_search),
+                contentDescription = "검색",
+                tint = Gray,
+                modifier = Modifier.size(20.dp)
+            )
+        },
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            focusedBorderColor = Color.Transparent,
+            unfocusedBorderColor = Color.Transparent,
+            cursorColor = Gray
+        ),
+        singleLine = true
+    )
+}
+
+
+
+
 
 @Composable
 fun TransferItem(name: String, amount: String) {

@@ -18,7 +18,7 @@ import com.gdg.kakaobank.ui.theme.MainYellow
 import com.gdg.kakaobank.ui.theme.h7Bold
 
 @Composable
-fun NextBox(text: String, onNextClick: () -> Unit) {
+fun NextBox(text: String, receiver : String, onNextClick: () -> Unit) {
     Box(
         modifier = Modifier
             .height(57.dp)
