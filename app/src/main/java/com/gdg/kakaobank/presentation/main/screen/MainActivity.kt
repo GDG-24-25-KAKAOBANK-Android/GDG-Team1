@@ -27,9 +27,9 @@ import com.gdg.kakaobank.presentation.home.navigation.HomeNavigator
 import com.gdg.kakaobank.presentation.main.navigation.MainNavigator
 import com.gdg.kakaobank.presentation.navigator.KakaoNavHost
 import com.gdg.kakaobank.presentation.other.navigation.OtherNavigator
+import com.gdg.kakaobank.ui.component.KaKaoBottomSheet
 import com.gdg.kakaobank.ui.theme.KakaoBankTheme
 import com.gdg.kakaobank.ui.theme.White
-import com.gdg.kakaobank.util.toast
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -42,18 +42,22 @@ class MainActivity : ComponentActivity() {
             KakaoBankTheme {
                 val context = LocalContext.current
                 var backPressedState by remember { mutableStateOf(true) }
-                var backPressedTime = 0L
                 val systemUiController = rememberSystemUiController()
                 val lifecycleOwner = LocalLifecycleOwner.current
+                var showBottomSheet by remember { mutableStateOf(false) }
 
                 BackHandler(enabled = backPressedState) {
-                    if (System.currentTimeMillis() - backPressedTime <= 3000) {
-                        (context as Activity).finish()
-                    } else {
-                        backPressedState = true
-                        context.toast("한 번 더 누르면 종료돼요")
-                    }
-                    backPressedTime = System.currentTimeMillis()
+                    showBottomSheet = true
+                }
+
+                if (showBottomSheet) {
+                    KaKaoBottomSheet(
+                        onDismiss = { showBottomSheet = false },
+                        onConfirm = { (context as Activity).finish() },
+                        title = "앱을 종료 하시겠습니까?",
+                        subtitle = "종료 버튼을 누르면 앱이 종료됩니다",
+                        confirmButtonText = "종료"
+                    )
                 }
 
                 SideEffect {
