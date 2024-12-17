@@ -14,5 +14,10 @@ class HomeNavigator(
     fun navigateToSend(receiver: String) {
         navController.navigate("send?receiver=$receiver")
     }
-
+    fun navigateToTransferEnd(receiver: String) {
+        navController.navigate("transferEnd?receiver=$receiver")
+    }
+    fun navigateToHome() {
+        navController.navigate("home")
+    }
 }

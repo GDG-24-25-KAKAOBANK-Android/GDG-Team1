@@ -6,6 +6,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.gdg.kakaobank.presentation.home.screen.HomeRoute
 import com.gdg.kakaobank.presentation.home.screen.SendRoute
+import com.gdg.kakaobank.presentation.home.screen.TransferEndRoute
 import com.gdg.kakaobank.presentation.home.screen.TransferRoute
 
 fun NavGraphBuilder.homeNavGraph(
@@ -25,6 +26,14 @@ fun NavGraphBuilder.homeNavGraph(
     ) { backStackEntry ->
         val receiver = backStackEntry.arguments?.getString("receiver") ?: "" // receiver 값 읽기
         SendRoute(navigator = navigator, receiver = receiver)
+    }
+
+    composable(
+        route = "transferEnd?receiver={receiver}",
+        arguments = listOf(navArgument("receiver"){ type = NavType.StringType })
+    ) { backStackEntry ->
+        val receiver = backStackEntry.arguments?.getString("receiver") ?: ""
+        TransferEndRoute(navigator = navigator, receiver = receiver)
     }
 
 }
