@@ -9,12 +9,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.gdg.kakaobank.R
@@ -23,7 +23,7 @@ import kotlinx.coroutines.delay
 
 
 @Composable
-fun SplashScreen(navController: NavController, modifier: Modifier = Modifier) {
+fun SplashScreen(navController: NavController) {
 
     LaunchedEffect(Unit) {
         delay(2500) // 2.5초 대기
@@ -47,7 +47,7 @@ fun SplashScreen(navController: NavController, modifier: Modifier = Modifier) {
             modifier = Modifier.padding(top = 100.dp)
         ){
             Image(
-                painter = painterResource(id = R.drawable.symbol_kakaobank),
+                imageVector = ImageVector.vectorResource(R.drawable.ic_splash_logo),
                 contentDescription = "카카오뱅크 로고",
                 modifier = Modifier.size(75.dp)
             )
